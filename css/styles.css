@@ -11,12 +11,9 @@ a {
 }
 :root {
   --background-color: #2f303a;
-}
-:root {
   --color-text: #757575;
-}
-:root {
   --Selection-color: #2196f3;
+  --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ######### ######## ###### header ###### ######## ######### */
@@ -31,10 +28,10 @@ a {
   display: flex;
   list-style: none;
   padding: 0;
-
   margin-top: 0;
   margin-bottom: 0;
 }
+
 .go-links li:last-child {
   margin-left: 46px;
 }
@@ -71,6 +68,8 @@ a {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: #212121;
+  padding: 32px 0;
+  transition: color 250ms var(--cubic-bezier);
 }
 .go-link:hover,
 .go-link:focus {
@@ -93,6 +92,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 250ms var(--cubic-bezier);
 }
 
 .contact-link:hover,
@@ -106,11 +106,30 @@ a {
 .contact-icon {
   margin-right: 10px;
   fill: #757575;
+  transition: fill 250ms var(--cubic-bezier);
+}
+/* pages current*/
+.current {
+  position: relative;
+  color: var(--Selection-color);
+}
+.current::after {
+  position: absolute;
+  display: block;
+  content: "";
+  border-radius: 2px;
+  background: var(--Selection-color);
+
+  width: 100%;
+  height: 4px;
+  bottom: 0;
 }
 /* ^^^^^^^^^^^^^^^^^^^^^ header ^^^^^^^^^^^^^^^^^^^^^*/
 
 /* ######### ######## ###### main ###### ######## ######### */
 .hero {
+  max-width: 1600px;
+  margin: 0 auto;
   background-image: url("../images/img10.jpg");
   background-size: cover;
   background-color: var(--background-color);
@@ -150,6 +169,8 @@ a {
   letter-spacing: 0.06em;
   cursor: pointer;
   padding: 10px 41px 10px 41px;
+  transition: color 250ms var(--cubic-bezier),
+    background-color 250ms var(--cubic-bezier);
 }
 .btn {
   padding-bottom: 113px;
@@ -202,7 +223,7 @@ a {
   color: var(--color-text);
   margin: 0;
 }
-/* ######## ######## section 3-4 title ######## ######## */
+/* ######## ######## section 3 title ######## ######## */
 .area-activity {
   padding-bottom: 94px;
   padding-top: 94px;
@@ -225,6 +246,30 @@ a {
   margin-top: 0;
   margin-bottom: 50px;
 }
+/* ######## etykiety na zdjeciach sekcja 3 title ##########*/
+.description-img {
+  position: relative;
+}
+.label {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(47, 48, 58, 0.8);
+  padding: 27px 0px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ######## ######## section 4 title-card ######## ######## */
 .section-team {
   background-color: #f5f4fa;
@@ -289,10 +334,12 @@ ul {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  transition: background-color 250ms var(--cubic-bezier);
 }
 
 .social-icon {
   fill: #afb1b8;
+  transition: fill 250ms var(--cubic-bezier);
 }
 .social-link:hover .social-icon,
 .social-link:focus .social-icon {
@@ -326,15 +373,16 @@ ul {
   height: 92px;
   border: 1px solid #afb1b8;
   border-radius: 4px;
+  transition: border-color 250ms var(--cubic-bezier);
 }
-
+.icon-logo {
+  fill: #afb1b8;
+  transition: fill 250ms var(--cubic-bezier);
+}
 .icon-client:hover,
 .icon-client:hover .icon-logo {
   border-color: var(--Selection-color);
   fill: var(--Selection-color);
-}
-.icon-logo {
-  fill: #afb1b8;
 }
 
 .icon-logo {
@@ -380,6 +428,9 @@ ul {
   font-size: 16px;
   line-height: 1.63;
   letter-spacing: 0.03em;
+  transition: color 250ms var(--cubic-bezier),
+    background-color 250ms var(--cubic-bezier),
+    border-color 250ms var(--cubic-bezier), box-shadow 250ms var(--cubic-bezier);
 }
 
 .switch-element:hover,
@@ -398,6 +449,9 @@ ul {
   padding-right: 15px;
   margin-top: 34px;
   margin-bottom: 0px;
+}
+.card-set > li {
+  transition: box-shadow 250ms var(--cubic-bezier);
 }
 .card-set > li:hover {
   box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
@@ -428,6 +482,31 @@ img {
   margin-top: 4px;
   margin-bottom: 0;
 }
+/* ######### overlay card portfolio ##########*/
+.card-img {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  width: 100%;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  padding: 49px 45px 49px 24px;
+  background-color: rgba(33, 150, 243, 0.9);
+  overflow: hidden;
+  transform: translatey(100%);
+  transition: transform 250ms ease-in-out;
+}
+li:hover .overlay {
+  transform: translatey(0);
+}
+
 /* ######### ######## ###### footer ###### ######## ######### */
 footer {
   background-color: var(--background-color);
@@ -451,6 +530,7 @@ address > ul {
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
+  transition: color 250ms var(--cubic-bezier);
 }
 .contact-link-map:hover,
 .contact-link-map:focus {
@@ -462,6 +542,7 @@ address > ul {
   letter-spacing: 0.03em;
   text-decoration-line: underline;
   color: rgba(255, 255, 255, 0.6);
+  transition: color 250ms var(--cubic-bezier);
 }
 
 .contact-email:hover,
@@ -475,6 +556,7 @@ address > ul {
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
   background-color: var(--background-color);
+  transition: color 250ms var(--cubic-bezier);
 }
 
 .contact-nr:hover,
@@ -538,7 +620,58 @@ address {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  transition: background-color 250ms var(--cubic-bezier);
 }
 .social-link-footer:hover {
   background: var(--Selection-color);
+}
+/* end footer */
+/* ########## backdrop ########## */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-property: visibility, opacity;
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic-bezier);
+}
+.modal {
+  height: 581px;
+  width: 528px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  position: absolute;
+  transition: transform;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
